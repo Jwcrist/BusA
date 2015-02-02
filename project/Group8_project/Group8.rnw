@@ -2,6 +2,7 @@
 
 \begin{document}
 <<>>=
+library(RCurl)
 dataset<-getURL('https://raw.githubusercontent.com/Jwcrist/BusA/master/project/Group8_project/Gov_Tuition_Data.csv',ssl.verifypeer=0L, followlocation=1L)
 
 dataset1<-read.csv(text=dataset)
