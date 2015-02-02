@@ -6,8 +6,27 @@ library(RCurl)
 dataset<-getURL('https://raw.githubusercontent.com/Jwcrist/BusA/master/project/Group8_project/Gov_Tuition_Data.csv',ssl.verifypeer=0L, followlocation=1L)
 
 dataset1<-read.csv(text=dataset)
-head(dataset1)
+head(dataset1,1)
 
+
+pairs(dataset1)
+cor(dataset1)
+library(dplyr)
+
+dataset2<-dataset1 %>%
+  filter(LATITUDE>50) %>%
+  filter(LATITUDE<25) %>%
+  filter(LONGITUD< (-130)) %>%
+  filter(LONGITUD>(-60))
+head(dataset2)
+library(ggplot2)
+ library(maps)
+ #load us map data
+ all_states <- map_data("state")
+ #plot all states with ggplot
+ggplot()+ 
+  geom_polygon(data=all_states, aes(x=long, y=lat, group = group),colour="white", fill="grey10" ) #+
+  geom_point(data=dataset2, aes(x=LONGITUD, y=LATITUDE, color="red"))
 @
 
 \end{document}
