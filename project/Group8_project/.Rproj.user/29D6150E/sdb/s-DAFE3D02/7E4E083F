@@ -1,14 +1,14 @@
 {
-    "contents" : "\\documentclass{article}\n\n\\begin{document}\n<<>>=\n\n\ndataset1<-readRDS(\"Gov_Tuition_Data.RDS\")\nwrite.csv(dataset1, \"Gov_Tuition_Data.csv\")\n\n@\n\n\\end{document}",
+    "contents" : "\\documentclass{article}\n\n\\begin{document}\n<<>>=\ndataset<-getURL('https://raw.githubusercontent.com/Jwcrist/BusA/master/project/Group8_project/Gov_Tuition_Data.csv',ssl.verifypeer=0L, followlocation=1L)\n\ndataset1<-read.csv(text=dataset)\nhead(dataset1)\n\n@\n\n\\end{document}",
     "created" : 1422908579786.000,
-    "dirty" : true,
-    "encoding" : "",
+    "dirty" : false,
+    "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1202073149",
+    "hash" : "353909697",
     "id" : "7E4E083F",
-    "lastKnownWriteTime" : 267283440,
-    "path" : null,
-    "project_path" : null,
+    "lastKnownWriteTime" : 1422909497,
+    "path" : "C:/Users/J/Desktop/Business Analysis/group_project/BusA/project/Group8_project/Group8.rnw",
+    "project_path" : "Group8.rnw",
     "properties" : {
         "tempName" : "Untitled1"
     },
