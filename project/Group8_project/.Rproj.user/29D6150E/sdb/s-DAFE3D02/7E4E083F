@@ -1,0 +1,17 @@
+{
+    "contents" : "\\documentclass{article}\n\n\\begin{document}\n<<>>=\n\n\ndataset1<-readRDS(\"Gov_Tuition_Data.RDS\")\nwrite.csv(dataset1, \"Gov_Tuition_Data.csv\")\n\n@\n\n\\end{document}",
+    "created" : 1422908579786.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1202073149",
+    "id" : "7E4E083F",
+    "lastKnownWriteTime" : 267283440,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "sweave"
+}
