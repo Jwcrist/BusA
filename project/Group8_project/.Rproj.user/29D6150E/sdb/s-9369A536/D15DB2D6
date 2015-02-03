@@ -1,0 +1,17 @@
+{
+    "contents" : "\\documentclass{article}\n\\usepackage[vmargin=1in,hmargin=1in]{geometry}\n\\usepackage{enumerate}\n\\begin{document}\n\\title{Driving Student Educational Interests Based on Academic Loans}\n\\date{BSAD 8700 - Business Analytics\\\\ Due: February 3, 2015}\n\\author{Kris Hanus, Laura Glathar, Arkya Rakshit, Jace Crist, Brandon Dlugosz\\\\ University of Nebraska at Omaha}\n\\maketitle\n\n\\begin{abstract}\n\nCurrently, students attending technical and vocational institutions are not graduating at the same rates as students from colleges and universities that are receiving the same student financial aid programs.  Why do the graduation rates differ for students from technical and vocational institutions compared to students in colleges and universities? The dataset used includes information about every college, university, and technical and vocational institution that participates in a federal student financial aid program.  The dataset we utilized includes data on year-over-year enrollments, program completions, graduation rates, faculty and staff, finances, institutional prices, and student financial aid.   After analyzing this dataset we explore relationships between graduation rates and student financial aid data.  While there are clear relationships between the data in each column, the dataset does not differentiate between race, age, and gender, which most likely plays a role in graduation rates. Our results illustrate relationships between stronger student financial aid packages, graduation rates, and institutional prices. Overall, this analysis will help prospective students make the best college decision for them.\n\n\n\\end{abstract}\n\n\\end{document}",
+    "created" : 1423007414154.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3521013103",
+    "id" : "D15DB2D6",
+    "lastKnownWriteTime" : 1423007723,
+    "path" : "C:/Users/J/Desktop/Business Analysis/group_project/BusA/paper/Group8_abstract.Rnw",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "sweave"
+}
