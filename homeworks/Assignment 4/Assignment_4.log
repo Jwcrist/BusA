@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.4.22)  3 FEB 2015 19:26
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.4.22)  3 FEB 2015 20:46
 entering extended mode
-**Group8_abstract.tex
+**Assignment_4.tex
 
-("C:\Users\J\Desktop\Business Analysis\group_project\BusA\paper\Group8_abstract
-.tex"
+("C:\Users\J\Desktop\Business Analysis\group_project\BusA\homeworks\Assignment 
+4\Assignment_4.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -119,8 +119,8 @@ Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
 )
-("C:\Users\J\Desktop\Business Analysis\group_project\BusA\paper\Group8_abstract
-.aux")
+("C:\Users\J\Desktop\Business Analysis\group_project\BusA\homeworks\Assignment 
+4\Assignment_4.aux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
 LaTeX Font Info:    ... okay on input line 54.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
@@ -133,7 +133,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
 LaTeX Font Info:    ... okay on input line 54.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
 LaTeX Font Info:    ... okay on input line 54.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count91
 \scratchdimen=\dimen117
@@ -187,27 +188,61 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 58.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 58.
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
+
+ []
+
+Package color Info: Redefining color shadecolor on input line 67.
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 69.
 [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-("C:\Users\J\Desktop\Business Analysis\group_project\BusA\paper\Group8_abstract
-.aux") ) 
+<figure/unnamed-chunk-2-1.pdf, id=10, 505.89pt x 505.89pt>
+File: figure/unnamed-chunk-2-1.pdf Graphic file (type pdf)
+
+<use figure/unnamed-chunk-2-1.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-2-1.pdf used on input line 130.
+(pdftex.def)             Requested size: 451.9772pt x 451.98521pt.
+ [2]
+Package color Info: Redefining color shadecolor on input line 137.
+ [3 <C:/Users/J/Desktop/Business Analysis/group_project/BusA/homeworks/Assignme
+nt 4/figure/unnamed-chunk-2-1.pdf>]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 184.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 184.
+Package color Info: Redefining color shadecolor on input line 188.
+
+[4]
+Package color Info: Redefining color shadecolor on input line 243.
+ [5]
+Underfull \hbox (badness 10000) in paragraph at lines 332--333
+
+ []
+
+[6]
+("C:\Users\J\Desktop\Business Analysis\group_project\BusA\homeworks\Assignment 
+4\Assignment_4.aux") ) 
 Here is how much of TeX's memory you used:
- 1779 strings out of 493921
- 25025 string characters out of 3144888
- 84023 words of memory out of 3000000
- 5080 multiletter control sequences out of 15000+200000
- 7282 words of font info for 26 fonts, out of 3000000 for 9000
+ 1789 strings out of 493921
+ 25327 string characters out of 3144888
+ 92023 words of memory out of 3000000
+ 5087 multiletter control sequences out of 15000+200000
+ 7151 words of font info for 26 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,6n,31p,1354b,199s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9
-.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pf
-b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><
-C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb>
-Output written on Group8_abstract.pdf (1 page, 62459 bytes).
+ 27i,6n,31p,290b,340s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+mr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt
+10.pfb>
+Output written on Assignment_4.pdf (6 pages, 3180583 bytes).
 PDF statistics:
- 26 PDF objects out of 1000 (max. 8388607)
+ 51 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

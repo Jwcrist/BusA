@@ -2,7 +2,7 @@
 \usepackage[vmargin=1in,hmargin=1in]{geometry}
 \usepackage{enumerate}
 \begin{document}
-\title{PostSecondary Educational Interested Based on Financial Aid}
+\title{Postsecondary Educational Interest Based on Financial Aid}
 \date{BSAD 8700 - Business Analytics\\ February 3, 2015}
 \author{Kris Hanus, Laura Glathar, Arkya Rakshit, Jace Crist, Brandon Dlugosz\\ University of Nebraska at Omaha}
 \maketitle

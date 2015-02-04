@@ -23,6 +23,7 @@ library(ggplot2)
 tail(Weekly, 1)
 summary(Weekly)
 data1<-Weekly[,1:8]
+attach(Weekly)
 cor(data1)
 pairs(data1)
 @
@@ -71,5 +72,30 @@ table(glm.pred2,Direction)
 The confusion matrix shows that on days when logistic regression predicts an increase in the market, it has a $56.2\%$ accuracy rate. The error rate is $43.8\%$ for predicting Up and is actually Down. The error rate is $44.1\%$ for predicting Down and is actually Up.
 \end{enumerate}
 
+\textbf{ANSWER FOR 11:} \\
+
+\begin{enumerate}[(a)]
+
+\item
+<<>>=
+
+@
+As can be shown above we have created our binary data and a median column
+
+\item
+<<>>=
+
+@
+\item
+<<>>=
+
+@
+\item
+Do Not Do
+\item
+Do Not Do
+\item
+
+\end{enumerate}
 
 \end{document}
