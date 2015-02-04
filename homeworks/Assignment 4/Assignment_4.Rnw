@@ -78,13 +78,19 @@ The confusion matrix shows that on days when logistic regression predicts an inc
 
 \item
 <<>>=
-
+#install.packages("RCurl")
+library(RCurl)
+dataset<-getURL(
+    'https://raw.githubusercontent.com/Jwcrist/BusA/master/homeworks/Assignment%204/Auto.csv',
+    ssl.verifypeer=0L, followlocation=1L)
+dataset1<-read.csv(text=dataset)
+head(dataset1,3)
 @
 As can be shown above we have created our binary data and a median column
 
 \item
 <<>>=
-
+pairs(dataset1)
 @
 \item
 <<>>=

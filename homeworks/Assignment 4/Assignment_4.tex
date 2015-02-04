@@ -334,11 +334,45 @@ The confusion matrix shows that on days when logistic regression predicts an inc
 \begin{enumerate}[(a)]
 
 \item
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{#install.packages("RCurl")}
+\hlkwd{library}\hlstd{(RCurl)}
+\end{alltt}
 
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: bitops}}\begin{alltt}
+\hlstd{dataset}\hlkwb{<-}\hlkwd{getURL}\hlstd{(}
+    \hlstr{'https://raw.githubusercontent.com/Jwcrist/BusA/master/homeworks/Assignment%204/Auto.csv'}\hlstd{,}
+    \hlkwc{ssl.verifypeer}\hlstd{=}\hlnum{0L}\hlstd{,} \hlkwc{followlocation}\hlstd{=}\hlnum{1L}\hlstd{)}
+\hlstd{dataset1}\hlkwb{<-}\hlkwd{read.csv}\hlstd{(}\hlkwc{text}\hlstd{=dataset)}
+\hlkwd{head}\hlstd{(dataset1,}\hlnum{3}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+##   mpg cylinders displacement horsepower weight acceleration year origin
+## 1  18         8          307        130   3504         12.0   70      1
+## 2  15         8          350        165   3693         11.5   70      1
+## 3  18         8          318        150   3436         11.0   70      1
+##                        name mpg01
+## 1 chevrolet chevelle malibu     0
+## 2         buick skylark 320     0
+## 3        plymouth satellite     0
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 As can be shown above we have created our binary data and a median column
 
 \item
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{pairs}\hlstd{(dataset1)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-7-1} 
 
+\end{knitrout}
 \item
 
 \item

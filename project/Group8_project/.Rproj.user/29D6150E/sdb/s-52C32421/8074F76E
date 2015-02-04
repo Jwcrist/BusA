@@ -1,0 +1,17 @@
+{
+    "contents" : "\\documentclass{article}\n\n\\begin{document}\n<<>>=\nlibrary(RCurl)\n# dataset<-readRDS(\"Gov_Tuition_Data.RDS\")\n# write.csv(dataset, \"Gov_Tuition_Data.csv\")\ndataset<-getURL('https://raw.githubusercontent.com/Jwcrist/BusA/master/project/Group8_project/Gov_Tuition_Data.csv',ssl.verifypeer=0L, followlocation=1L)\n\ndataset1<-read.csv(text=dataset)\nhead(dataset1,1)\n\n\npairs(dataset1)\ncor(dataset1)\nlibrary(dplyr)\n\ndataset2<-dataset1 %>%\n  filter(LATITUDE>50) %>%\n  filter(LATITUDE<25) %>%\n  filter(LONGITUD< (-130)) %>%\n  filter(LONGITUD>(-60))\nhead(dataset2)\nlibrary(ggplot2)\n library(maps)\n #load us map data\n all_states <- map_data(\"state\")\n #plot all states with ggplot\nggplot()+ \n  geom_polygon(data=all_states, aes(x=long, y=lat, group = group),colour=\"white\", fill=\"grey10\" ) #+\n  geom_point(data=dataset2, aes(x=LONGITUD, y=LATITUDE, color=\"red\"))\n@\n\n\\end{document}",
+    "created" : 1423018051720.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1739000419",
+    "id" : "8074F76E",
+    "lastKnownWriteTime" : 1422999637,
+    "path" : "C:/Users/J/Desktop/Business Analysis/group_project/BusA/project/Group8_project/Group8.rnw",
+    "project_path" : "Group8.rnw",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "sweave"
+}
