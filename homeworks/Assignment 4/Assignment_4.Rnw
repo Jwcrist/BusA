@@ -90,18 +90,47 @@ As can be shown above we have created our binary data and a median column
 
 \item
 <<>>=
+library(dplyr) 
+dataset2<-dataset1 %>%
+  
+  select(mpg, cylinders, displacement, as.numeric(horsepower), weight, acceleration, year, origin, mpg01)
+str(dataset2)
+cor(dataset2)
 pairs(dataset1)
+library(ggplot2)
+ggplot(dataset1, aes(x=factor(mpg01), y=mpg))+geom_boxplot()
+ggplot(dataset1, aes(x=factor(mpg01), y=cylinders))+geom_boxplot()
+ggplot(dataset1, aes(x=factor(mpg01), y=displacement))+geom_boxplot()
+ggplot(dataset1, aes(x=factor(mpg01), y=weight))+geom_boxplot()
+ggplot(dataset1, aes(x=factor(mpg01), y=acceleration))+geom_boxplot()
+ggplot(dataset1, aes(x=factor(mpg01), y=year))+geom_boxplot()
 @
+
+There is too many layers to observe anything of significance in horsepower. Acceleration and year may have be significantly different from eachother. All the other plots show that there is probable differences between our binary factors.
 \item
 <<>>=
-
+tail(dataset1)
+trainingdata<-dataset1[1:318,]
+testdata<-dataset1[79,]
 @
-\item
-Do Not Do
-\item
-Do Not Do
-\item
+A $80\%$ training data set was choosen to be used inorder to prove against our test data.
 
+\item
+Do Not Do
+\item
+Do Not Do
+\item
+<<>>=
+glm.fit3=glm(mpg01~Lag2,data=Weekly, family = binomial)
+summary(glm.fit2)
+coef(glm.fit2)
+contrasts(Direction)
+glm.pred2=rep("Down", 1089)
+glm.probs2=predict(glm.fit2,type="response")
+glm.probs2[1:10]
+glm.pred2[glm.probs2>0.5]<-"Up"
+table(glm.pred2,Direction)
+@
 \end{enumerate}
 
 \end{document}

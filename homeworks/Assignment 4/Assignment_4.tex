@@ -367,20 +367,182 @@ As can be shown above we have created our binary data and a median column
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
+\hlkwd{library}\hlstd{(dplyr)}
+\end{alltt}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: package 'dplyr' was built under R version 3.1.2}}
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# \\\#\# Attaching package: 'dplyr'\\\#\# \\\#\# The following object is masked from 'package:MASS':\\\#\# \\\#\#\ \ \ \  select\\\#\# \\\#\# The following object is masked from 'package:stats':\\\#\# \\\#\#\ \ \ \  filter\\\#\# \\\#\# The following objects are masked from 'package:base':\\\#\# \\\#\#\ \ \ \  intersect, setdiff, setequal, union}}\begin{alltt}
+\hlstd{dataset2}\hlkwb{<-}\hlstd{dataset1} \hlopt{%>%}
+
+  \hlkwd{select}\hlstd{(mpg, cylinders, displacement,} \hlkwd{as.numeric}\hlstd{(horsepower), weight, acceleration, year, origin, mpg01)}
+\hlkwd{str}\hlstd{(dataset2)}
+\end{alltt}
+\begin{verbatim}
+## 'data.frame':	397 obs. of  9 variables:
+##  $ mpg         : num  18 15 18 16 17 15 14 14 14 15 ...
+##  $ cylinders   : int  8 8 8 8 8 8 8 8 8 8 ...
+##  $ displacement: num  307 350 318 304 302 429 454 440 455 390 ...
+##  $ horsepower  : Factor w/ 94 levels "?","100","102",..: 17 35 29 29 24 42 47 46 48 40 ...
+##  $ weight      : int  3504 3693 3436 3433 3449 4341 4354 4312 4425 3850 ...
+##  $ acceleration: num  12 11.5 11 12 10.5 10 9 8.5 10 8.5 ...
+##  $ year        : int  70 70 70 70 70 70 70 70 70 70 ...
+##  $ origin      : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ mpg01       : int  0 0 0 0 0 0 0 0 0 0 ...
+\end{verbatim}
+\begin{alltt}
+\hlkwd{cor}\hlstd{(dataset2)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in cor(dataset2): 'x' must be numeric}}\begin{alltt}
 \hlkwd{pairs}\hlstd{(dataset1)}
 \end{alltt}
 \end{kframe}
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-7-1} 
+\begin{kframe}\begin{alltt}
+\hlkwd{library}\hlstd{(ggplot2)}
+\hlkwd{ggplot}\hlstd{(dataset1,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=}\hlkwd{factor}\hlstd{(mpg01),} \hlkwc{y}\hlstd{=mpg))}\hlopt{+}\hlkwd{geom_boxplot}\hlstd{()}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-7-2} 
+\begin{kframe}\begin{alltt}
+\hlkwd{ggplot}\hlstd{(dataset1,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=}\hlkwd{factor}\hlstd{(mpg01),} \hlkwc{y}\hlstd{=cylinders))}\hlopt{+}\hlkwd{geom_boxplot}\hlstd{()}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-7-3} 
+\begin{kframe}\begin{alltt}
+\hlkwd{ggplot}\hlstd{(dataset1,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=}\hlkwd{factor}\hlstd{(mpg01),} \hlkwc{y}\hlstd{=displacement))}\hlopt{+}\hlkwd{geom_boxplot}\hlstd{()}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-7-4} 
+\begin{kframe}\begin{alltt}
+\hlkwd{ggplot}\hlstd{(dataset1,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=}\hlkwd{factor}\hlstd{(mpg01),} \hlkwc{y}\hlstd{=weight))}\hlopt{+}\hlkwd{geom_boxplot}\hlstd{()}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-7-5} 
+\begin{kframe}\begin{alltt}
+\hlkwd{ggplot}\hlstd{(dataset1,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=}\hlkwd{factor}\hlstd{(mpg01),} \hlkwc{y}\hlstd{=acceleration))}\hlopt{+}\hlkwd{geom_boxplot}\hlstd{()}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-7-6} 
+\begin{kframe}\begin{alltt}
+\hlkwd{ggplot}\hlstd{(dataset1,} \hlkwd{aes}\hlstd{(}\hlkwc{x}\hlstd{=}\hlkwd{factor}\hlstd{(mpg01),} \hlkwc{y}\hlstd{=year))}\hlopt{+}\hlkwd{geom_boxplot}\hlstd{()}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-7-7} 
 
 \end{knitrout}
+
+There is too many layers to observe anything of significance in horsepower. Acceleration and year may have be significantly different from eachother. All the other plots show that there is probable differences between our binary factors.
 \item
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{tail}\hlstd{(dataset1)}
+\end{alltt}
+\begin{verbatim}
+##     mpg cylinders displacement horsepower weight acceleration year origin
+## 392  27         4          151         90   2950         17.3   82      1
+## 393  27         4          140         86   2790         15.6   82      1
+## 394  44         4           97         52   2130         24.6   82      2
+## 395  32         4          135         84   2295         11.6   82      1
+## 396  28         4          120         79   2625         18.6   82      1
+## 397  31         4          119         82   2720         19.4   82      1
+##                 name mpg01
+## 392 chevrolet camaro     1
+## 393  ford mustang gl     1
+## 394        vw pickup     1
+## 395    dodge rampage     1
+## 396      ford ranger     1
+## 397       chevy s-10     1
+\end{verbatim}
+\begin{alltt}
+\hlstd{trainingdata}\hlkwb{<-}\hlstd{dataset1[}\hlnum{1}\hlopt{:}\hlnum{318}\hlstd{,]}
+\hlstd{testdata}\hlkwb{<-}\hlstd{dataset1[}\hlnum{79}\hlstd{,]}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+A $80\%$ training data set was choosen to be used inorder to prove against our test data.
 
 \item
 Do Not Do
 \item
 Do Not Do
 \item
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{glm.fit3}\hlkwb{=}\hlkwd{glm}\hlstd{(mpg01}\hlopt{~}\hlstd{Lag2,}\hlkwc{data}\hlstd{=Weekly,} \hlkwc{family} \hlstd{= binomial)}
+\end{alltt}
 
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'mpg01' not found}}\begin{alltt}
+\hlkwd{summary}\hlstd{(glm.fit2)}
+\end{alltt}
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = Direction ~ Lag2, family = binomial, data = Weekly)
+## 
+## Deviance Residuals: 
+##    Min      1Q  Median      3Q     Max  
+## -1.564  -1.267   1.008   1.086   1.386  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)  0.21473    0.06123   3.507 0.000453 ***
+## Lag2         0.06279    0.02636   2.382 0.017230 *  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 1496.2  on 1088  degrees of freedom
+## Residual deviance: 1490.4  on 1087  degrees of freedom
+## AIC: 1494.4
+## 
+## Number of Fisher Scoring iterations: 4
+\end{verbatim}
+\begin{alltt}
+\hlkwd{coef}\hlstd{(glm.fit2)}
+\end{alltt}
+\begin{verbatim}
+## (Intercept)        Lag2 
+##  0.21473151  0.06279058
+\end{verbatim}
+\begin{alltt}
+\hlkwd{contrasts}\hlstd{(Direction)}
+\end{alltt}
+\begin{verbatim}
+##      Up
+## Down  0
+## Up    1
+\end{verbatim}
+\begin{alltt}
+\hlstd{glm.pred2}\hlkwb{=}\hlkwd{rep}\hlstd{(}\hlstr{"Down"}\hlstd{,} \hlnum{1089}\hlstd{)}
+\hlstd{glm.probs2}\hlkwb{=}\hlkwd{predict}\hlstd{(glm.fit2,}\hlkwc{type}\hlstd{=}\hlstr{"response"}\hlstd{)}
+\hlstd{glm.probs2[}\hlnum{1}\hlopt{:}\hlnum{10}\hlstd{]}
+\end{alltt}
+\begin{verbatim}
+##         1         2         3         4         5         6         7 
+## 0.5777243 0.5661029 0.5492840 0.5132426 0.6071571 0.5644982 0.5716776 
+##         8         9        10 
+## 0.5321015 0.5659641 0.5541137
+\end{verbatim}
+\begin{alltt}
+\hlstd{glm.pred2[glm.probs2}\hlopt{>}\hlnum{0.5}\hlstd{]}\hlkwb{<-}\hlstr{"Up"}
+\hlkwd{table}\hlstd{(glm.pred2,Direction)}
+\end{alltt}
+\begin{verbatim}
+##          Direction
+## glm.pred2 Down  Up
+##      Down   33  26
+##      Up    451 579
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 \end{enumerate}
 
 \end{document}
