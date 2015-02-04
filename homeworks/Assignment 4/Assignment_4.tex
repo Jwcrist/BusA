@@ -375,8 +375,8 @@ As can be shown above we have created our binary data and a median column
 
 {\ttfamily\noindent\itshape\color{messagecolor}{\#\# \\\#\# Attaching package: 'dplyr'\\\#\# \\\#\# The following object is masked from 'package:MASS':\\\#\# \\\#\#\ \ \ \  select\\\#\# \\\#\# The following object is masked from 'package:stats':\\\#\# \\\#\#\ \ \ \  filter\\\#\# \\\#\# The following objects are masked from 'package:base':\\\#\# \\\#\#\ \ \ \  intersect, setdiff, setequal, union}}\begin{alltt}
 \hlstd{dataset2}\hlkwb{<-}\hlstd{dataset1} \hlopt{%>%}
-
   \hlkwd{select}\hlstd{(mpg, cylinders, displacement,} \hlkwd{as.numeric}\hlstd{(horsepower), weight, acceleration, year, origin, mpg01)}
+
 \hlkwd{str}\hlstd{(dataset2)}
 \end{alltt}
 \begin{verbatim}

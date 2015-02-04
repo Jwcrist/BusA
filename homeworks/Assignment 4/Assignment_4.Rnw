@@ -92,8 +92,8 @@ As can be shown above we have created our binary data and a median column
 <<>>=
 library(dplyr) 
 dataset2<-dataset1 %>%
-  
   select(mpg, cylinders, displacement, as.numeric(horsepower), weight, acceleration, year, origin, mpg01)
+
 str(dataset2)
 cor(dataset2)
 pairs(dataset1)
