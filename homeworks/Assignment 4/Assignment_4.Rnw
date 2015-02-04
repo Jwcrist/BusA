@@ -121,7 +121,7 @@ Do Not Do
 \item
 Do Not Do
 \item
-<<>>=
+<<warning=FALSE>>=
 attach(dataset2)
 glm.fit3=lm(mpg01~mpg+cylinders+horsepower,data=dataset2, family = binomial)
 summary(glm.fit3)
