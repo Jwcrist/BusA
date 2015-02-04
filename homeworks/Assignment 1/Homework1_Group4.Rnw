@@ -1,0 +1,179 @@
+\documentclass{article}
+\usepackage[vmargin=1in,hmargin=1in]{geometry}
+\usepackage{enumerate}
+\begin{document}
+\title{Homework 1}
+\date{BSAD 8700 - Business Analytics\\ Due: January 19, 2015}
+\author{Cally Thompson, Diane Keeton, Evan Porter, Jace Crist, Kayla Uhing\\ University of Nebraska at Omaha}
+\maketitle
+
+\textbf{ANSWER FOR 8:} \\
+<<include=FALSE>>=
+#install.packages(c("MASS","ggplot2","dplyr","png", "grid"))
+library(MASS)
+library(ggplot2)
+library(dplyr)
+library(png)
+library(grid)
+@
+
+\begin{enumerate}[(a)]
+\item
+<<>>=
+college<-read.csv("college.csv")
+tail(college)
+@
+\item
+<<>>=
+#fix(college)
+rownames(college)=college[,1]
+#fix(college)
+college=college[,-1]
+#fix(college)
+@
+Fix 1$:$ \\
+<<>>=
+a<-readPNG("PNG1.png")
+aRaster <- as.raster(a)
+grid.raster(aRaster)
+
+@
+Fix 2$:$ \\
+<<>>=
+b<-readPNG("PNG2.png")
+bRaster <- as.raster(b)
+grid.raster(bRaster)
+@
+Fix 3$:$ \\
+<<>>=
+c<-readPNG("PNG3.png")
+cRaster <- as.raster(c)
+grid.raster(cRaster)
+
+@
+
+\item
+\begin{enumerate}[(i)]
+\item
+<<>>=
+summary(college)
+@
+\item
+<<>>=
+pairs(college[,1:10])
+@
+\item
+<<>>=
+attach(college)
+plot(Outstate~Private)
+@
+\item
+There are 78 elite Universities.
+<<>>=
+Elite=rep("No",nrow(college))
+Elite[college$Top10perc>50]="Yes"
+Elite=as.factor(Elite)
+college=data.frame(college ,Elite)
+summary(college)
+plot(college$Outstate~college$Elite)
+@
+
+\item
+<<>>=
+hist(Apps)
+par(mfrow=c(2,2))
+hist(Apps)
+hist(Accept)
+hist(Books)
+hist(PhD)
+@
+\item
+After reviewing the data and performing the basic functions of R, we have found that there are numerous ways to extract information. There are also multiple different ways to find this data, there are no "right" or "wrong" ways of doing so. Through analyzing qualitative variables, R allows you to get the data you will need, although proper coding must be enforced. The basic commands were a bit difficult to figure out, but the more we did the assignment, the more we started learning what we were actually doing. The visuals of the Histograms and Plot graphs were helpful in dissecting the data. \\
+\end{enumerate}
+\end{enumerate}
+
+
+\textbf{ANSWER FOR 10:}
+
+\begin{enumerate}[(a)]
+\item
+<<>>=
+tail(Boston)
+dim(Boston)
+#?(Boston)
+@
+The Boston data frame has 506 rows and 14 columns. \\ The columns and rows represent data including crime, age and median value of owner-occupied homes in \$ 1000s \\
+\item
+<<>>=
+pairs(Boston)
+pairs(Boston[,1:7])
+pairs(Boston[,8:14])
+round(cor(Boston),2)
+@
+There is a negative correlation between the lower status of the population (lstat) and median value of owner occupied homes (medv). This correlation could be attributed to the fact that the lower the individual status, the lower the income of the home. Another example of negative correlation would be from the nitrogen oxcide concentration (nox) and the weighted mean of distances to Boston employment centers (dis). This correlation is related to the fact that as employment centers are more spread out, the polution decreases. An example of positive correlation would be the relationship between the average number of rooms per dwelling (rm) and median value of owner occupied home (medv). This graph shows that the number of rooms in a dwelling go up as the median value of the home increases. \\
+
+\item
+<<>>=
+ggplot(Boston, aes(medv,crim))+geom_point()
+@
+In regard to predictors associated with crime rate, it is shown that there seems to be a relationship such that the higher the median value of the home, the lower the crime rate. \\
+  
+\item
+<<>>=
+write.csv(Boston, "Boston.csv")
+# colnames(Boston)
+ggplot(Boston, aes(black,crim))+geom_point()
+ggplot(Boston, aes(age,crim))+geom_point()
+ggplot(Boston, aes(ptratio,crim))+geom_point()
+ggplot(Boston, aes(tax,crim))+geom_point()
+ggplot(Boston, aes(black,lstat))+geom_point()
+ggplot(Boston, aes(lstat,crim))+geom_point()
+@
+We were able to determine that crime rates increase in older houses and in areas with higher black populations; by using scatterplots. Also, we determined that suburbs 400-500 have higher tax rates, and 357-488 have above average crime rates. Pupil teacher ratios appear to remain relatively constant within all suburbs. \\
+
+\item
+<<>>=
+Boston1<-Boston %>%
+  filter(chas>0)
+dim(Boston1)
+@
+We were able to calculate that $35$ suburbs in the data set bound the Charles River \\
+
+\item
+<<>>=
+median(Boston$ptratio)
+@
+The median of the pupil teacher ratio is $19.05$ \\
+
+\item
+<<>>=
+Boston2<-Boston %>%
+  mutate(suburb=as.numeric(1:nrow(Boston))) %>%
+  select(suburb,medv) %>%
+  arrange(-medv)
+tail(Boston2,3)
+@
+Suburb $399$ and $406$ have the lowest median value of owner occupied homes. \\
+
+\item
+<<>>=
+Boston3<-Boston %>%
+  filter(rm>7)
+dim(Boston3)
+round((64/506)*100)
+@
+$13\%$ have rooms with more than $7$ rooms \\
+
+<<>>=
+Boston3<-Boston %>%
+  filter(rm>8)
+dim(Boston3)
+round((13/506)*100,2)
+@
+$3\%$ have rooms with more than $8$ rooms \\
+
+
+
+\end{enumerate}
+
+\end{document}

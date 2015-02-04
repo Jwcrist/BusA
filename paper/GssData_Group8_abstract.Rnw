@@ -1,0 +1,17 @@
+\documentclass{article}
+\usepackage[vmargin=1in,hmargin=1in]{geometry}
+\usepackage{enumerate}
+\begin{document}
+\title{Postsecondary Educational Interest Based on Financial Aid}
+\date{BSAD 8700 - Business Analytics\\ February 3, 2015}
+\author{Kris Hanus, Laura Glathar, Arkya Rakshit, Jace Crist, Brandon Dlugosz\\ University of Nebraska at Omaha}
+\maketitle
+
+\begin{abstract}
+
+Currently, in the city of Omaha, there is a perception that ethnicity determines the location in which a person lives and the educational level he or she obtains.  This perception extends to the relationship between location and income level as well.  Is there any validity to these perceptions?  We have analyzed census data within the city of Omaha that includes location, ethnicity, educational level, and income.  Our analysis included exploring relationships between ethnicity and location, ethnicity and educational level, location and educational level, location and income, and educational level and income.  Understanding these relationships could have a positive impact on city planning such as implementing appropriate social programs, allocating city funds, and further understanding the student population in local schools.
+
+
+\end{abstract}
+
+\end{document}
