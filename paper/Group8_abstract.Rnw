@@ -3,7 +3,7 @@
 \usepackage{enumerate}
 \begin{document}
 \title{Driving Student Educational Interests Based on Academic Loans}
-\date{BSAD 8700 - Business Analytics\\ Due: February 3, 2015}
+\date{BSAD 8700 - Business Analytics\\ February 3, 2015}
 \author{Kris Hanus, Laura Glathar, Arkya Rakshit, Jace Crist, Brandon Dlugosz\\ University of Nebraska at Omaha}
 \maketitle
 
