@@ -1,0 +1,17 @@
+{
+    "contents" : "\\documentclass{article}\n\\usepackage[vmargin=1in,hmargin=1in]{geometry}\n\\usepackage{enumerate}\n\\begin{document}\n\\title{Homework 3}\n\\date{BSAD 8700 - Business Analytics\\\\ Due: February 2, 2015}\n\\author{Kris Hanus, Laura Glathar, Arkya Rakshit, Jace Crist, Brandon Dlugosz\\\\ University of Nebraska at Omaha}\n\\maketitle\n\n\\textbf{ANSWER FOR 10:} \\\\\n<<echo=FALSE, warning=FALSE>>=\n# install.packages(\"ISLR\", \"MASS\")\nlibrary(MASS)\nlibrary(ISLR)\nlibrary(ggplot2)\n@\n\n\n\\begin{enumerate}[(a)]\n\\item\n<<>>=\nhead(Weekly, 1)\nsummary(Weekly)\ndata1<-Weekly[,1:8]\ncor(data1)\npairs(data1)\nattach(data1)\nplot(Volume)\n@\n\n\n\n\n\\end{enumerate}\n\n\n\\end{document}",
+    "created" : 1423010650054.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2641175933",
+    "id" : "96D89D4C",
+    "lastKnownWriteTime" : 1423011981,
+    "path" : "C:/Users/J/Desktop/Business Analysis/group_project/BusA/homeworks/Assignment 4/Assignment 4.Rnw",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "source_on_save" : false,
+    "type" : "sweave"
+}

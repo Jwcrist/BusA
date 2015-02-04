@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage[vmargin=1in,hmargin=1in]{geometry}
+\usepackage{enumerate}
+\begin{document}
+\title{Homework 3}
+\date{BSAD 8700 - Business Analytics\\ Due: February 2, 2015}
+\author{Kris Hanus, Laura Glathar, Arkya Rakshit, Jace Crist, Brandon Dlugosz\\ University of Nebraska at Omaha}
+\maketitle
+
+\textbf{ANSWER FOR 10:} \\
+<<echo=FALSE, warning=FALSE>>=
+# install.packages("ISLR", "MASS")
+library(MASS)
+library(ISLR)
+library(ggplot2)
+@
+
+
+\begin{enumerate}[(a)]
+\item
+<<>>=
+head(Weekly, 1)
+summary(Weekly)
+data1<-Weekly[,1:8]
+cor(data1)
+pairs(data1)
+attach(data1)
+plot(Volume)
+@
+
+
+
+
+\end{enumerate}
+
+
+\end{document}
