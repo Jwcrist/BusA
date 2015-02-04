@@ -86,16 +86,17 @@ dataset<-getURL(
 dataset1<-read.csv(text=dataset)
 head(dataset1,3)
 @
-As can be shown above we have created our binary data and a median column
+As can be shown above we have created our the requested column.
 
 \item
 <<>>=
 library(dplyr) 
 dataset2<-dataset1 %>%
   select(mpg, cylinders, displacement, as.numeric(horsepower), weight, acceleration, year, origin, mpg01)
-
+dataset2$horsepower <- gsub("?",NA,dataset2$horsepower, fixed = TRUE)
+dataset2$horsepower <- as.numeric(dataset2$horsepower)
 str(dataset2)
-cor(dataset2)
+cor(na.omit(dataset2))
 pairs(dataset1)
 library(ggplot2)
 ggplot(dataset1, aes(x=factor(mpg01), y=mpg))+geom_boxplot()
@@ -121,16 +122,22 @@ Do Not Do
 Do Not Do
 \item
 <<>>=
-glm.fit3=glm(mpg01~Lag2,data=Weekly, family = binomial)
-summary(glm.fit2)
-coef(glm.fit2)
-contrasts(Direction)
-glm.pred2=rep("Down", 1089)
-glm.probs2=predict(glm.fit2,type="response")
-glm.probs2[1:10]
-glm.pred2[glm.probs2>0.5]<-"Up"
-table(glm.pred2,Direction)
+attach(dataset2)
+glm.fit3=lm(mpg01~mpg+cylinders+horsepower,data=dataset2, family = binomial)
+summary(glm.fit3)
+coef(glm.fit3)
+glm.pred3=rep("0", 397)
+glm.probs3=predict(glm.fit3,type="response")
+glm.probs3[1:10]
+glm.pred3[glm.probs3>0.5]<-"1"
+table(glm.pred3,mpg01)
+(158+148)/397
+43/(158+43)
+48/(148+48)
 @
+
+Our model predicted with a $77.1\%$ accuracy. The probability that our model incorrectly predicts below median and is above median is $21.4\%$. The probability that our model incorrectly predicts above the median and is below the median is $24.5\%$. 
+
 \end{enumerate}
 
 \end{document}

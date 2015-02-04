@@ -361,7 +361,7 @@ The confusion matrix shows that on days when logistic regression predicts an inc
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-As can be shown above we have created our binary data and a median column
+As can be shown above we have created our the requested column.
 
 \item
 \begin{knitrout}
@@ -376,7 +376,8 @@ As can be shown above we have created our binary data and a median column
 {\ttfamily\noindent\itshape\color{messagecolor}{\#\# \\\#\# Attaching package: 'dplyr'\\\#\# \\\#\# The following object is masked from 'package:MASS':\\\#\# \\\#\#\ \ \ \  select\\\#\# \\\#\# The following object is masked from 'package:stats':\\\#\# \\\#\#\ \ \ \  filter\\\#\# \\\#\# The following objects are masked from 'package:base':\\\#\# \\\#\#\ \ \ \  intersect, setdiff, setequal, union}}\begin{alltt}
 \hlstd{dataset2}\hlkwb{<-}\hlstd{dataset1} \hlopt{%>%}
   \hlkwd{select}\hlstd{(mpg, cylinders, displacement,} \hlkwd{as.numeric}\hlstd{(horsepower), weight, acceleration, year, origin, mpg01)}
-
+\hlstd{dataset2}\hlopt{$}\hlstd{horsepower} \hlkwb{<-} \hlkwd{gsub}\hlstd{(}\hlstr{"?"}\hlstd{,}\hlnum{NA}\hlstd{,dataset2}\hlopt{$}\hlstd{horsepower,} \hlkwc{fixed} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlstd{dataset2}\hlopt{$}\hlstd{horsepower} \hlkwb{<-} \hlkwd{as.numeric}\hlstd{(dataset2}\hlopt{$}\hlstd{horsepower)}
 \hlkwd{str}\hlstd{(dataset2)}
 \end{alltt}
 \begin{verbatim}
@@ -384,7 +385,7 @@ As can be shown above we have created our binary data and a median column
 ##  $ mpg         : num  18 15 18 16 17 15 14 14 14 15 ...
 ##  $ cylinders   : int  8 8 8 8 8 8 8 8 8 8 ...
 ##  $ displacement: num  307 350 318 304 302 429 454 440 455 390 ...
-##  $ horsepower  : Factor w/ 94 levels "?","100","102",..: 17 35 29 29 24 42 47 46 48 40 ...
+##  $ horsepower  : num  130 165 150 150 140 198 220 215 225 190 ...
 ##  $ weight      : int  3504 3693 3436 3433 3449 4341 4354 4312 4425 3850 ...
 ##  $ acceleration: num  12 11.5 11 12 10.5 10 9 8.5 10 8.5 ...
 ##  $ year        : int  70 70 70 70 70 70 70 70 70 70 ...
@@ -392,11 +393,31 @@ As can be shown above we have created our binary data and a median column
 ##  $ mpg01       : int  0 0 0 0 0 0 0 0 0 0 ...
 \end{verbatim}
 \begin{alltt}
-\hlkwd{cor}\hlstd{(dataset2)}
+\hlkwd{cor}\hlstd{(}\hlkwd{na.omit}\hlstd{(dataset2))}
 \end{alltt}
-
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in cor(dataset2): 'x' must be numeric}}\begin{alltt}
+\begin{verbatim}
+##                     mpg  cylinders displacement horsepower     weight
+## mpg           1.0000000 -0.7776175   -0.8051269 -0.7784268 -0.8322442
+## cylinders    -0.7776175  1.0000000    0.9508233  0.8429834  0.8975273
+## displacement -0.8051269  0.9508233    1.0000000  0.8972570  0.9329944
+## horsepower   -0.7784268  0.8429834    0.8972570  1.0000000  0.8645377
+## weight       -0.8322442  0.8975273    0.9329944  0.8645377  1.0000000
+## acceleration  0.4233285 -0.5046834   -0.5438005 -0.6891955 -0.4168392
+## year          0.5805410 -0.3456474   -0.3698552 -0.4163615 -0.3091199
+## origin        0.5652088 -0.5689316   -0.6145351 -0.4551715 -0.5850054
+## mpg01         0.8404525 -0.7382676   -0.7372797 -0.6492595 -0.7457191
+##              acceleration       year     origin      mpg01
+## mpg             0.4233285  0.5805410  0.5652088  0.8404525
+## cylinders      -0.5046834 -0.3456474 -0.5689316 -0.7382676
+## displacement   -0.5438005 -0.3698552 -0.6145351 -0.7372797
+## horsepower     -0.6891955 -0.4163615 -0.4551715 -0.6492595
+## weight         -0.4168392 -0.3091199 -0.5850054 -0.7457191
+## acceleration    1.0000000  0.2903161  0.2127458  0.3230383
+## year            0.2903161  1.0000000  0.1815277  0.4537035
+## origin          0.2127458  0.1815277  1.0000000  0.5154393
+## mpg01           0.3230383  0.4537035  0.5154393  1.0000000
+\end{verbatim}
+\begin{alltt}
 \hlkwd{pairs}\hlstd{(dataset1)}
 \end{alltt}
 \end{kframe}
@@ -474,75 +495,93 @@ Do Not Do
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{glm.fit3}\hlkwb{=}\hlkwd{glm}\hlstd{(mpg01}\hlopt{~}\hlstd{Lag2,}\hlkwc{data}\hlstd{=Weekly,} \hlkwc{family} \hlstd{= binomial)}
+\hlkwd{attach}\hlstd{(dataset2)}
 \end{alltt}
 
 
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'mpg01' not found}}\begin{alltt}
-\hlkwd{summary}\hlstd{(glm.fit2)}
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# The following object is masked from package:ggplot2:\\\#\# \\\#\#\ \ \ \  mpg}}\begin{alltt}
+\hlstd{glm.fit3}\hlkwb{=}\hlkwd{lm}\hlstd{(mpg01}\hlopt{~}\hlstd{mpg}\hlopt{+}\hlstd{cylinders}\hlopt{+}\hlstd{horsepower,}\hlkwc{data}\hlstd{=dataset2,} \hlkwc{family} \hlstd{= binomial)}
+\end{alltt}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning in lm.fit(x, y, offset = offset, singular.ok = singular.ok, ...): extra argument 'family' is disregarded.}}\begin{alltt}
+\hlkwd{summary}\hlstd{(glm.fit3)}
 \end{alltt}
 \begin{verbatim}
 ## 
 ## Call:
-## glm(formula = Direction ~ Lag2, family = binomial, data = Weekly)
+## lm(formula = mpg01 ~ mpg + cylinders + horsepower, data = dataset2, 
+##     family = binomial)
 ## 
-## Deviance Residuals: 
-##    Min      1Q  Median      3Q     Max  
-## -1.564  -1.267   1.008   1.086   1.386  
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -0.6527 -0.1661  0.0257  0.1789  0.8012 
 ## 
 ## Coefficients:
-##             Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)  0.21473    0.06123   3.507 0.000453 ***
-## Lag2         0.06279    0.02636   2.382 0.017230 *  
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -0.382820   0.129915  -2.947  0.00341 ** 
+## mpg          0.047609   0.002848  16.715  < 2e-16 ***
+## cylinders   -0.102064   0.015208  -6.711 6.86e-11 ***
+## horsepower   0.002892   0.000675   4.284 2.32e-05 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## (Dispersion parameter for binomial family taken to be 1)
-## 
-##     Null deviance: 1496.2  on 1088  degrees of freedom
-## Residual deviance: 1490.4  on 1087  degrees of freedom
-## AIC: 1494.4
-## 
-## Number of Fisher Scoring iterations: 4
+## Residual standard error: 0.2575 on 388 degrees of freedom
+##   (5 observations deleted due to missingness)
+## Multiple R-squared:  0.737,	Adjusted R-squared:  0.7349 
+## F-statistic: 362.4 on 3 and 388 DF,  p-value: < 2.2e-16
 \end{verbatim}
 \begin{alltt}
-\hlkwd{coef}\hlstd{(glm.fit2)}
+\hlkwd{coef}\hlstd{(glm.fit3)}
 \end{alltt}
 \begin{verbatim}
-## (Intercept)        Lag2 
-##  0.21473151  0.06279058
+##  (Intercept)          mpg    cylinders   horsepower 
+## -0.382820390  0.047608751 -0.102064129  0.002891938
 \end{verbatim}
 \begin{alltt}
-\hlkwd{contrasts}\hlstd{(Direction)}
+\hlstd{glm.pred3}\hlkwb{=}\hlkwd{rep}\hlstd{(}\hlstr{"0"}\hlstd{,} \hlnum{397}\hlstd{)}
+\hlstd{glm.probs3}\hlkwb{=}\hlkwd{predict}\hlstd{(glm.fit3,}\hlkwc{type}\hlstd{=}\hlstr{"response"}\hlstd{)}
+\hlstd{glm.probs3[}\hlnum{1}\hlopt{:}\hlnum{10}\hlstd{]}
 \end{alltt}
 \begin{verbatim}
-##      Up
-## Down  0
-## Up    1
+##            1            2            3            4            5 
+##  0.033576028 -0.008032393  0.091414788 -0.003802713  0.014886658 
+##            6            7            8            9           10 
+##  0.087401562  0.103415448  0.088955758  0.117875138  0.064266058
 \end{verbatim}
 \begin{alltt}
-\hlstd{glm.pred2}\hlkwb{=}\hlkwd{rep}\hlstd{(}\hlstr{"Down"}\hlstd{,} \hlnum{1089}\hlstd{)}
-\hlstd{glm.probs2}\hlkwb{=}\hlkwd{predict}\hlstd{(glm.fit2,}\hlkwc{type}\hlstd{=}\hlstr{"response"}\hlstd{)}
-\hlstd{glm.probs2[}\hlnum{1}\hlopt{:}\hlnum{10}\hlstd{]}
+\hlstd{glm.pred3[glm.probs3}\hlopt{>}\hlnum{0.5}\hlstd{]}\hlkwb{<-}\hlstr{"1"}
+\hlkwd{table}\hlstd{(glm.pred3,mpg01)}
 \end{alltt}
 \begin{verbatim}
-##         1         2         3         4         5         6         7 
-## 0.5777243 0.5661029 0.5492840 0.5132426 0.6071571 0.5644982 0.5716776 
-##         8         9        10 
-## 0.5321015 0.5659641 0.5541137
+##          mpg01
+## glm.pred3   0   1
+##         0 158  43
+##         1  48 148
 \end{verbatim}
 \begin{alltt}
-\hlstd{glm.pred2[glm.probs2}\hlopt{>}\hlnum{0.5}\hlstd{]}\hlkwb{<-}\hlstr{"Up"}
-\hlkwd{table}\hlstd{(glm.pred2,Direction)}
+\hlstd{(}\hlnum{158}\hlopt{+}\hlnum{148}\hlstd{)}\hlopt{/}\hlnum{397}
 \end{alltt}
 \begin{verbatim}
-##          Direction
-## glm.pred2 Down  Up
-##      Down   33  26
-##      Up    451 579
+## [1] 0.7707809
+\end{verbatim}
+\begin{alltt}
+\hlnum{43}\hlopt{/}\hlstd{(}\hlnum{158}\hlopt{+}\hlnum{43}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.2139303
+\end{verbatim}
+\begin{alltt}
+\hlnum{48}\hlopt{/}\hlstd{(}\hlnum{148}\hlopt{+}\hlnum{48}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.244898
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
+
+Our model predicted with a $77.1\%$ accuracy. The probability that our model incorrectly predicts below median and is above median is $21.4\%$. The probability that our model incorrectly predicts above the median and is below the median is $24.5\%$. 
+
 \end{enumerate}
 
 \end{document}
