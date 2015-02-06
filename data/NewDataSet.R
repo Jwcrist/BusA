@@ -1,6 +1,8 @@
+library(RCurl)
+library(dplyr)
 # Ourdata<-read.csv("pdb2014bgv5_us.csv")
 # colnames(Ourdata)
-library(dplyr)
+
 # SelData<- Ourdata %>%
 #   select(State, State_name, 
 #          County, County_name, 
@@ -27,7 +29,12 @@ library(dplyr)
 
 # write.csv(NewDat1,"City_of_Omaha.csv")
 
-NewDat1<-read.csv("City_of_Omaha.csv")
+dataset<-getURL(
+  'https://raw.githubusercontent.com/Jwcrist/BusA/master/data/City_of_Omaha.csv',
+  ssl.verifypeer=0L, 
+  followlocation=1L)
+
+NewDat1<-read.csv(text=dataset)
 
 NewDat1.1<-NewDat[7:14]
 tail(NewDat1.1)
@@ -37,4 +44,16 @@ pairs(NewDat1.1)
 
 #So the goal here is to analyze to see if where people live has any correlations with the predictors and to observe commmon themes.
 summary(NewDat1.1)
+
+
+
+
+
+
+
+
+
+
+
+
   
