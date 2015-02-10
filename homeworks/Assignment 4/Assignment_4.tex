@@ -52,8 +52,8 @@
 \usepackage{enumerate}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
-\title{Homework 3}
-\date{BSAD 8700 - Business Analytics\\ Due: February 2, 2015}
+\title{Homework 4}
+\date{BSAD 8700 - Business Analytics\\ Due: February 9, 2015}
 \author{Kris Hanus, Laura Glathar, Arkya Rakshit, Jace Crist, Brandon Dlugosz\\ University of Nebraska at Omaha}
 \maketitle
 
@@ -216,27 +216,27 @@ The only predictors which have significance are the intercept and Lag2. Lag2 is 
 ##     Up    430 557
 \end{verbatim}
 \begin{alltt}
-\hlnum{557}\hlopt{/}\hlstd{(}\hlnum{557}\hlopt{+}\hlnum{430}\hlstd{)}
+\hlstd{(}\hlnum{54}\hlopt{+}\hlnum{557}\hlstd{)}\hlopt{/}\hlstd{(}\hlnum{557}\hlopt{+}\hlnum{430}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
-## [1] 0.5643364
+## [1] 0.6190476
 \end{verbatim}
 \begin{alltt}
-\hlnum{430}\hlopt{/}\hlstd{(}\hlnum{557}\hlopt{+}\hlnum{430}\hlstd{)}
+\hlnum{430}\hlopt{/}\hlstd{(}\hlnum{48}\hlopt{+}\hlnum{430}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
-## [1] 0.4356636
+## [1] 0.8995816
 \end{verbatim}
 \begin{alltt}
-\hlnum{48}\hlopt{/}\hlstd{(}\hlnum{48}\hlopt{+}\hlnum{54}\hlstd{)}
+\hlnum{48}\hlopt{/}\hlstd{(}\hlnum{48}\hlopt{+}\hlnum{430}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
-## [1] 0.4705882
+## [1] 0.1004184
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
 
-The confusion matrix shows that on days when logistic regression predicts an increase in the market, it has a $56.4\%$ accuracy rate. The error rate is $43.6\%$ for predicting Up and is actually Down. The error rate is $47.1\%$ for predicting Down and is actually Up.
+The confusion matrix shows that on days when logistic regression predicts an increase in the market, it has a $61.9\%$ accuracy rate. $90\%$ of the error is predicting Up and is actually Down. $10\%$ for predicting Down and is actually Up.
 
 \item
 \begin{knitrout}
@@ -306,27 +306,27 @@ The confusion matrix shows that on days when logistic regression predicts an inc
 ##      Up    451 579
 \end{verbatim}
 \begin{alltt}
-\hlnum{579}\hlopt{/}\hlstd{(}\hlnum{579}\hlopt{+}\hlnum{451}\hlstd{)}
+\hlstd{(}\hlnum{33}\hlopt{+}\hlnum{579}\hlstd{)}\hlopt{/}\hlstd{(}\hlnum{579}\hlopt{+}\hlnum{451}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
-## [1] 0.5621359
+## [1] 0.5941748
 \end{verbatim}
 \begin{alltt}
-\hlnum{451}\hlopt{/}\hlstd{(}\hlnum{579}\hlopt{+}\hlnum{451}\hlstd{)}
+\hlnum{451}\hlopt{/}\hlstd{(}\hlnum{26}\hlopt{+}\hlnum{451}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
-## [1] 0.4378641
+## [1] 0.9454927
 \end{verbatim}
 \begin{alltt}
-\hlnum{26}\hlopt{/}\hlstd{(}\hlnum{26}\hlopt{+}\hlnum{33}\hlstd{)}
+\hlnum{26}\hlopt{/}\hlstd{(}\hlnum{26}\hlopt{+}\hlnum{451}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
-## [1] 0.440678
+## [1] 0.05450734
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
 
-The confusion matrix shows that on days when logistic regression predicts an increase in the market, it has a $56.2\%$ accuracy rate. The error rate is $43.8\%$ for predicting Up and is actually Down. The error rate is $44.1\%$ for predicting Down and is actually Up.
+The confusion matrix shows that on days when logistic regression predicts an increase in the market, it has a $59.4\%$ accuracy rate. $94.6\%$ of the error is predicting Up and is actually Down. $5.5\%$ for predicting Down and is actually Up.
 \end{enumerate}
 
 \textbf{ANSWER FOR 11:} \\
@@ -370,8 +370,6 @@ As can be shown above we have created our the requested column.
 \hlkwd{library}\hlstd{(dplyr)}
 \end{alltt}
 
-
-{\ttfamily\noindent\color{warningcolor}{\#\# Warning: package 'dplyr' was built under R version 3.1.2}}
 
 {\ttfamily\noindent\itshape\color{messagecolor}{\#\# \\\#\# Attaching package: 'dplyr'\\\#\# \\\#\# The following object is masked from 'package:MASS':\\\#\# \\\#\#\ \ \ \  select\\\#\# \\\#\# The following object is masked from 'package:stats':\\\#\# \\\#\#\ \ \ \  filter\\\#\# \\\#\# The following objects are masked from 'package:base':\\\#\# \\\#\#\ \ \ \  intersect, setdiff, setequal, union}}\begin{alltt}
 \hlstd{dataset2}\hlkwb{<-}\hlstd{dataset1} \hlopt{%>%}
@@ -456,7 +454,7 @@ As can be shown above we have created our the requested column.
 
 \end{knitrout}
 
-There is too many layers to observe anything of significance in horsepower. Acceleration and year may have be significantly different from eachother. All the other plots show that there is probable differences between our binary factors.
+There is too many layers to observe anything of significance in horsepower. As far as our response variable, acceleration and year can not be shown to be significantly different from either mpg01 class. All the other plots show that there is probable differences between the binary factors.
 \item
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -481,17 +479,22 @@ There is too many layers to observe anything of significance in horsepower. Acce
 \end{verbatim}
 \begin{alltt}
 \hlstd{trainingdata}\hlkwb{<-}\hlstd{dataset1[}\hlnum{1}\hlopt{:}\hlnum{318}\hlstd{,]}
-\hlstd{testdata}\hlkwb{<-}\hlstd{dataset1[}\hlnum{79}\hlstd{,]}
+\hlstd{testdata}\hlkwb{<-}\hlstd{dataset1[}\hlnum{319}\hlopt{:}\hlnum{397}\hlstd{,]}
+\hlkwd{dim}\hlstd{(testdata)}
 \end{alltt}
+\begin{verbatim}
+## [1] 79 10
+\end{verbatim}
 \end{kframe}
 \end{knitrout}
-A $80\%$ training data set was choosen to be used inorder to prove against our test data.
+An $80\%$ training data set was choosen.
 
 \item
 Do Not Do
 \item
 Do Not Do
 \item
+
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}

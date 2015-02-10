@@ -2,7 +2,7 @@
 \usepackage[vmargin=1in,hmargin=1in]{geometry}
 \usepackage{enumerate}
 \begin{document}
-\title{Homework 3}
+\title{Homework 4}
 \date{BSAD 8700 - Business Analytics\\ Due: February 2, 2015}
 \author{Kris Hanus, Laura Glathar, Arkya Rakshit, Jace Crist, Brandon Dlugosz\\ University of Nebraska at Omaha}
 \maketitle

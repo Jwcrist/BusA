@@ -2,8 +2,8 @@
 \usepackage[vmargin=1in,hmargin=1in]{geometry}
 \usepackage{enumerate}
 \begin{document}
-\title{Homework 3}
-\date{BSAD 8700 - Business Analytics\\ Due: February 2, 2015}
+\title{Homework 4}
+\date{BSAD 8700 - Business Analytics\\ Due: February 9, 2015}
 \author{Kris Hanus, Laura Glathar, Arkya Rakshit, Jace Crist, Brandon Dlugosz\\ University of Nebraska at Omaha}
 \maketitle
 
@@ -46,12 +46,12 @@ glm.probs=predict(glm.fit,type="response")
 glm.probs[1:10]
 glm.pred[glm.probs>0.5]<-"Up"
 table(glm.pred,Direction)
-557/(557+430)
-430/(557+430)
-48/(48+54)
+(54+557)/(557+430)
+430/(48+430)
+48/(48+430)
 @
 
-The confusion matrix shows that on days when logistic regression predicts an increase in the market, it has a $56.4\%$ accuracy rate. The error rate is $43.6\%$ for predicting Up and is actually Down. The error rate is $47.1\%$ for predicting Down and is actually Up.
+The confusion matrix shows that on days when logistic regression predicts an increase in the market, it has a $61.9\%$ accuracy rate. $90\%$ of the error is predicting Up and is actually Down. $10\%$ for predicting Down and is actually Up.
 
 \item
 <<>>=
@@ -64,12 +64,12 @@ glm.probs2=predict(glm.fit2,type="response")
 glm.probs2[1:10]
 glm.pred2[glm.probs2>0.5]<-"Up"
 table(glm.pred2,Direction)
-579/(579+451)
-451/(579+451)
-26/(26+33)
+(33+579)/(579+451)
+451/(26+451)
+26/(26+451)
 @
 
-The confusion matrix shows that on days when logistic regression predicts an increase in the market, it has a $56.2\%$ accuracy rate. The error rate is $43.8\%$ for predicting Up and is actually Down. The error rate is $44.1\%$ for predicting Down and is actually Up.
+The confusion matrix shows that on days when logistic regression predicts an increase in the market, it has a $59.4\%$ accuracy rate. $94.6\%$ of the error is predicting Up and is actually Down. $5.5\%$ for predicting Down and is actually Up.
 \end{enumerate}
 
 \textbf{ANSWER FOR 11:} \\
@@ -89,7 +89,7 @@ head(dataset1,3)
 As can be shown above we have created our the requested column.
 
 \item
-<<>>=
+<<warning=FALSE>>=
 library(dplyr) 
 dataset2<-dataset1 %>%
   select(mpg, cylinders, displacement, as.numeric(horsepower), weight, acceleration, year, origin, mpg01)
@@ -107,20 +107,22 @@ ggplot(dataset1, aes(x=factor(mpg01), y=acceleration))+geom_boxplot()
 ggplot(dataset1, aes(x=factor(mpg01), y=year))+geom_boxplot()
 @
 
-There is too many layers to observe anything of significance in horsepower. Acceleration and year may have be significantly different from eachother. All the other plots show that there is probable differences between our binary factors.
+There is too many layers to observe anything of significance in horsepower. As far as our response variable, acceleration and year can not be shown to be significantly different from either mpg01 class. All the other plots show that there is probable differences between the binary factors.
 \item
 <<>>=
 tail(dataset1)
 trainingdata<-dataset1[1:318,]
-testdata<-dataset1[79,]
+testdata<-dataset1[319:397,]
+dim(testdata)
 @
-A $80\%$ training data set was choosen to be used inorder to prove against our test data.
+An $80\%$ training data set was choosen.
 
 \item
 Do Not Do
 \item
 Do Not Do
 \item
+
 <<warning=FALSE>>=
 attach(dataset2)
 glm.fit3=lm(mpg01~mpg+cylinders+horsepower,data=dataset2, family = binomial)
