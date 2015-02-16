@@ -1,0 +1,157 @@
+\documentclass{article}
+\usepackage[vmargin=1in,hmargin=1in]{geometry}
+\usepackage{enumerate}
+\begin{document}
+\title{Homework 5}
+\date{BSAD 8700 - Business Analytics\\ Due: February 16, 2015}
+\author{Kris Hanus, Laura Glathar, Arkya Rakshit, Jace Crist, Brandon Dlugosz\\ University of Nebraska at Omaha}
+\maketitle
+
+\textbf{ANSWER FOR 8:} \\
+
+\begin{enumerate}[(a)]
+\item
+<<warning=FALSE>>=
+library(MASS)
+library(dplyr)
+library(ISLR)
+library(caret)
+library(tree)
+@
+For some odd reason echo $=$ FALSE is failing.
+<<>>=
+attach(Carseats)
+High = ifelse (Sales <= 8,"No", "Yes")
+Carseats = data.frame(Carseats, High)
+head(Carseats)
+set.seed(2345)
+DataIndex<-createDataPartition(Carseats$Sales, p = 0.8, list=FALSE, times=1)
+train<-Carseats[DataIndex,]
+Carseats.test<-Carseats[-DataIndex,]
+High.test=High[-DataIndex]
+dim(Carseats)
+dim(train)
+dim(Carseats.test)
+
+@
+Carseatstraining is a randomly chosen training data set, and Carseatstest is a randomly chosen test data set. Both were selected by non-replacement methods. This is a better method of selection (then what the book shows) creating no bias and no sequencing issues in the data.
+
+\item
+<<>>=
+str(Carseats)
+tree.carseats=tree(High~.-Sales, Carseats)
+summary(tree.carseats)
+
+plot(tree.carseats)
+text(tree.carseats, pretty = 0,cex=0.6,srt=75)
+@
+$MSE = 9\%$. By forcing the model to create an optimal dataset and model selection this should eliminating error.
+
+\item
+<<>>=
+tree.carseats
+
+set.seed (2)
+tree.carseats =tree(High~.-Sales, train)
+tree.pred=predict(tree.carseats, Carseats.test, type = 'class' )
+table(tree.pred, High.test)
+
+(59)/79
+
+set.seed (3)
+cv.carseats =cv.tree(tree.carseats ,FUN=prune.misclass )
+names(cv.carseats )
+
+cv.carseats
+
+par(mfrow =c(1,2))
+plot(cv.carseats$size ,cv.carseats$dev ,type="b")
+plot(cv.carseats$k ,cv.carseats$dev ,type="b")
+
+prune.carseats =prune.misclass (tree.carseats ,best =6)
+plot(prune.carseats )
+text(prune.carseats ,pretty =0,cex=0.6,srt=75)
+
+tree.pred=predict (prune.carseats , Carseats.test ,type="class")
+table(tree.pred ,High.test)
+
+prune.carseats =prune.misclass (tree.carseats ,best =20)
+plot(prune.carseats )
+text(prune.carseats ,pretty =0,cex=0.75,srt=75)
+tree.pred=predict (prune.carseats , Carseats.test ,type="class")
+table(tree.pred ,High.test)
+@
+With pruning, my results from part b it seems that the fitted model to the training data is predicting with a $75\%$ accuracy. This is $3.5\%$ better then the books method. Pruning my model is only pushing around the error. It is not improving the model. However, using bagging methods instead might be the better method.
+\end{enumerate}
+\newpage
+\textbf{ANSWER FOR 9:} \\
+
+\begin{enumerate}[(a)]
+\item
+<<>>=
+tail(OJ, 3)
+800/1070
+attach(OJ)
+set.seed(5432)
+DataIndex2<-createDataPartition(OJ$Purchase, p = 0.747, list=FALSE, times=1)
+train2<-OJ[DataIndex2,]
+OJ.test<-OJ[-DataIndex2,]
+dim(train2)
+dim(OJ.test)
+
+@
+We decided to use a random sample because it will get rid of any bias or sequencing unknown to us in our sampling.
+
+\item
+<<>>=
+tree.OJ=tree(Purchase~.,train2)
+summary(tree.OJ)
+@
+There were 8 terminal nodes with a $MSE = 16.25\%$.
+
+\item
+<<>>=
+tree.OJ
+@
+We picked terminal node begining after leaf 10. It seems that $76.37\%$ of customers will pick Minute Maid OJ unless there is a significant discount offered for Citrus Hill.
+
+\item
+<<>>=
+plot(tree.OJ)
+text(tree.OJ,pretty =0,cex=0.6,srt=75)
+@
+There seems to be a focus on the type of customer loyalty for CH based on deals and discounts. Also, in general customers will go will Minute Maid unless there is a savings.
+
+\item
+<<>>=
+tree.pred2=predict(tree.OJ, OJ.test, type = 'class' )
+table(tree.pred2,OJ.test$Purchase)
+(154+63)/270
+@
+We are able to predict with an $80.4\%$ accuracy. 
+
+\item
+<<>>=
+set.seed (3)
+cv.OJ =cv.tree(tree.OJ ,FUN=prune.misclass )
+names(cv.OJ)
+cv.OJ
+@
+
+The optimal tree size would have 4 terminal nodes. Dev is the lowest when size is 4.
+
+\item
+<<>>=
+par(mfrow =c(1,2))
+plot(cv.OJ$size ,cv.OJ$dev ,type="b")
+plot(cv.OJ$k ,cv.OJ$dev ,type="b")
+@
+The first plot is a plot with tree size on the x-axis and cross-validated
+classification error rate on the y-axis.
+
+\item
+As stated in part f, the optimal tree size would have 4 terminal nodes.
+
+\end{enumerate}
+
+\end{document}
