@@ -1,7 +1,7 @@
-getwd()
-library(MASS)
-head(USArrests)
-write.csv(USArrests,"USArrests.csv")
+# getwd()
+# library(MASS)
+# head(USArrests)
+# write.csv(USArrests,"USArrests.csv")
 
 # 1. Use the "Reporting and Visualization" presentation, posted on blackboard, as a guide to help you complete your homework.
 # 
